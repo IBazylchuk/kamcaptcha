@@ -1,3 +1,4 @@
+require 'pry'
 begin
   require "RMagick"
 rescue LoadError => e
@@ -111,7 +112,7 @@ module Kamcaptcha
         self.gravity      = Magick::WestGravity
         self.font_family  = "Verdana"
         self.font_weight  = Magick::BoldWeight
-        self.fill         = "#666666"
+        self.fill         = "#666"
         self.stroke       = "black"
         self.stroke_width = 2
         self.pointsize    = 44
@@ -123,14 +124,15 @@ module Kamcaptcha
       text_img        = text_img.wave(3, 90)
 
       # Now we need to get the white out
-      text_mask       = text_img.negate
-      text_mask.matte = false
+      # text_mask       = text_img.negate(false)
+      # text_mask.matte = false
 
       # Add cut-out our captcha from the black image with varying tranparency
-      black_img.composite!(text_mask, Magick::CenterGravity, Magick::CopyOpacityCompositeOp)
+      # black_img.composite!(text_mask, Magick::CenterGravity, Magick::CopyOpacityCompositeOp)
+      black_img.composite!(text_img, Magick::CenterGravity, Magick::OverCompositeOp)
 
       text_img.destroy!
-      text_mask.destroy!
+      # text_mask.destroy!
 
       black_img
     end

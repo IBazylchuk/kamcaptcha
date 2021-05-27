@@ -1,6 +1,8 @@
 require "digest"
 
 require 'kamcaptcha/token'
+require 'kamcaptcha/helper'
+require 'kamcaptcha/validation'
 
 # You must configure Kamcaptcha with a path to the generated words, and a salt.
 # The salt must be the same you used when generating words.

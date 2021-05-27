@@ -6,12 +6,12 @@ require "bundler"
 require "kamcaptcha"
 require "kamcaptcha/generator"
 
-require "trollop"
+require "optimist"
 require "digest"
 
 ARGV << "--help" if ARGV.empty?
 
-opts = Trollop.options do
+opts = Optimist.options do
   banner <<-EOS
 Captcha word library generator. Builds images of words to present to users.
 
