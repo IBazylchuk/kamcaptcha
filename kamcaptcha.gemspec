@@ -8,7 +8,7 @@ Gem::Specification.new "kamcaptcha", "1.0.0" do |s|
   s.license     = "Apache License Version 2.0"
 
   s.add_runtime_dependency("optimist")
-  s.add_runtime_dependency("rmagick")
+  # s.add_runtime_dependency("rmagick")
 
   s.add_development_dependency("rake")
   s.add_development_dependency("bundler")
